@@ -20,11 +20,14 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+      # Этот экшен устанавливает Gradle, управляет кэшем и делает команду 'gradle' доступной.
+      # Он избавляет от необходимости иметь gradlew в репозитории.
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
-        run: ./gradlew build
+        # Мы используем 'gradle' напрямую, вместо './gradlew'
+        run: gradle build
 
       - name: Get plugin properties
         id: properties
@@ -42,5 +45,3 @@ jobs:
           body: "Automatic release for version ${{ steps.properties.outputs.VERSION }}"
           files: "${{ steps.properties.outputs.ARTIFACT_PATH }}"
           fail_on_unmatched_files: true
-          # `make_latest: true` сделает этот релиз последним
-          # `prerelease: false` обозначит его как полноценный релиз
