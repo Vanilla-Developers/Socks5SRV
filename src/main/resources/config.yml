@@ -1,0 +1,37 @@
+# Socks5SRV Plugin Configuration / Конфигурация плагина Socks5SRV
+# This plugin allows any Java application (including other plugins) to use a SOCKS5 proxy for all HTTP requests.
+# Этот плагин позволяет любому Java-приложению (включая другие плагины) использовать SOCKS5 прокси для всех HTTP запросов.
+
+proxy:
+  # SOCKS5 proxy settings / Настройки SOCKS5 прокси
+  # --- IMPORTANT --- / --- ВАЖНО ---
+  # PLEASE CHANGE THESE VALUES. The plugin will not start with default values.
+  # ПОЖАЛУЙСТА, ИЗМЕНИТЕ ЭТИ ЗНАЧЕНИЯ. Плагин не запустится со значениями по умолчанию.
+  host: "127.0.0.1" # Default / По умолчанию: "127.0.0.1"
+  port: 1080 # Default / По умолчанию: 1080
+  username: "discordsrv" # Default / По умолчанию: "discordsrv" or "" for no auth / или "" для отключения аутентификации
+  password: "123456789" # Default / По умолчанию: "123456789" or "" for no auth / или "" для отключения аутентификации
+
+  # Connection settings / Настройки соединения
+  timeout: 30 # Request timeout in seconds / Таймаут запроса в секундах
+  retry_attempts: 3 # Number of retry attempts on connection failure / Количество попыток переподключения при сбое
+
+# Plugin settings / Настройки плагина
+settings:
+  # Enable/disable the plugin / Включить/выключить плагин
+  enabled: true
+
+  # Language for plugin messages. / Язык сообщений плагина.
+  # Available: en, ru. You can add your own by creating a file in the 'lang' folder.
+  # Доступно: en, ru. Вы можете добавить свой язык, создав файл в папке 'lang'.
+  lang: "en"
+
+  # Test proxy connection on startup / Тестировать соединение с прокси при запуске
+  test_on_startup: true
+
+  # Log level (INFO, WARNING, ERROR) / Уровень логирования (INFO, WARNING, ERROR)
+  log_level: INFO
+
+  # Auto-reconnect if proxy fails / Автоматическое переподключение при сбое прокси
+  auto_reconnect: true
+  reconnect_delay: 5000 # Delay in milliseconds before reconnecting / Задержка в миллисекундах перед переподключением

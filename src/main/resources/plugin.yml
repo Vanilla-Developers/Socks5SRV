@@ -1,0 +1,6 @@
+name: Socks5SRV
+main: com.damir00109.socks5SRV.Socks5SRV
+version: '${version}'
+api-version: '1.21'
+author: Damir00109, Hesus_Uncle
+description: Sets a global SOCKS5 proxy for all Java HTTP requests.
