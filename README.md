@@ -1,10 +1,7 @@
 # Socks5SRV
 
-![GitHub Actions Workflow Status](https://github.com/<ВАШ_ЛОГИН>/<ВАШ_РЕПОЗИТОРИЙ>/actions/workflows/release.yml/badge.svg)
+![RELEASES](https://github.com/Vanilla-Developers/Socks5SRV/releases)
 
----
-
-[English](#socks5srv-english) | [Русский](#socks5srv-русский)
 
 ---
 
