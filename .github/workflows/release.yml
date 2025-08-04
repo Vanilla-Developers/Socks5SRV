@@ -26,17 +26,11 @@ jobs:
       - name: Build with Gradle
         run: gradle build
 
-      # Диагностический шаг: показываем содержимое папки build/libs
-      - name: List files in the build directory
-        run: ls -R build/libs
-
-      - name: Get plugin properties
+      - name: Get plugin version
         id: properties
         run: |
           VERSION=$(grep 'pluginVersion' gradle.properties | cut -d'=' -f2)
-          ARTIFACT_NAME=$(grep "rootProject.name = '" settings.gradle | sed "s/rootProject.name = '//;s/'//")
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
-          echo "ARTIFACT_PATH=build/libs/${ARTIFACT_NAME}-${VERSION}.jar" >> $GITHUB_OUTPUT
 
       - name: Create or Update Release
         uses: softprops/action-gh-release@v2
@@ -44,5 +38,6 @@ jobs:
           tag_name: "v${{ steps.properties.outputs.VERSION }}"
           name: "Release v${{ steps.properties.outputs.VERSION }}"
           body: "Automatic release for version ${{ steps.properties.outputs.VERSION }}"
-          files: "${{ steps.properties.outputs.ARTIFACT_PATH }}"
+          # Используем wildcard (маску) для надежного поиска JAR-файла
+          files: "build/libs/*.jar"
           fail_on_unmatched_files: true
